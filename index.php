@@ -3,7 +3,7 @@ spl_autoload_register(function (string $className) {
     require_once __DIR__ . '/src/' . str_replace('\\', '/', $className) . '.php';
 });
 
-abstractFactory();
+factoryMethod();
 
 //контейнер свойств
 function propertyContainer()
@@ -45,4 +45,10 @@ function abstractFactory()
     $carFactory = new \abstractFactory\CarFactory();
     var_dump($carFactory->getFactory(\abstractFactory\FordFactory::class)->getDoor());
     var_dump($carFactory->getFactory(\abstractFactory\NissanFactory::class)->getDoor());
+}
+
+function factoryMethod()
+{
+    var_dump((new \factoryMethod\NissanCarShop())->sellRedDoor());
+    var_dump((new \factoryMethod\FordCarShop())->sellRedDoor());
 }
