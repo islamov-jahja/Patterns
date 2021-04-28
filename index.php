@@ -10,6 +10,7 @@ spl_autoload_register(function (string $className) {
 //factoryMethod();
 //staticFactory();
 //simpleFactory();
+singleton();
 
 //контейнер свойств
 function propertyContainer()
@@ -73,4 +74,12 @@ function simpleFactory()
     $carFactory = new \simpleFactory\CarFactory();
     $carFactory->build(\staticFactory\Nissan::class)->startEngine();
     $carFactory->build(\staticFactory\Ford::class)->startEngine();
+}
+
+function singleton()
+{
+    $singletone = \singleton\Singleton::getInstance();
+    $singletone->setName('fury');
+    $singletone2 = \singleton\Singleton::getInstance();
+    var_dump($singletone2->getName());
 }
