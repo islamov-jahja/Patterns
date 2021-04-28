@@ -3,7 +3,13 @@ spl_autoload_register(function (string $className) {
     require_once __DIR__ . '/src/' . str_replace('\\', '/', $className) . '.php';
 });
 
-factoryMethod();
+//propertyContainer();
+//delegation();
+//eventChannel();
+//abstractFactory();
+//factoryMethod();
+//staticFactory();
+//simpleFactory();
 
 //контейнер свойств
 function propertyContainer()
@@ -47,8 +53,24 @@ function abstractFactory()
     var_dump($carFactory->getFactory(\abstractFactory\NissanFactory::class)->getDoor());
 }
 
+// фабричный метод
 function factoryMethod()
 {
     var_dump((new \factoryMethod\NissanCarShop())->sellRedDoor());
     var_dump((new \factoryMethod\FordCarShop())->sellRedDoor());
+}
+
+//статическая фабрика
+function staticFactory()
+{
+    \staticFactory\CarFactory::build(\staticFactory\Nissan::class)->startEngine();
+    \staticFactory\CarFactory::build(\staticFactory\Ford::class)->startEngine();
+}
+
+//простая фабрика
+function simpleFactory()
+{
+    $carFactory = new \simpleFactory\CarFactory();
+    $carFactory->build(\staticFactory\Nissan::class)->startEngine();
+    $carFactory->build(\staticFactory\Ford::class)->startEngine();
 }
