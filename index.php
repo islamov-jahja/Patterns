@@ -78,10 +78,10 @@ function simpleFactory()
 
 function singleton()
 {
-    $singletone = \singleton\Singleton::getInstance();
-    $singletone->setName('fury');
-    $singletone2 = \singleton\Singleton::getInstance();
-    var_dump($singletone2->getName());
+    $singleton = \singleton\Singleton::getInstance();
+    $singleton->setName('fury');
+    $singleton2 = \singleton\Singleton::getInstance();
+    var_dump($singleton2->getName());
 }
 
 function strategy()
@@ -117,4 +117,14 @@ function prototype()
     var_dump($client);
     $orderCpy = clone $order;
     var_dump($client);
+}
+
+function adapter()
+{
+    $cassettePlayer = new \adapter\CassettePlayer();
+    var_dump($cassettePlayer);
+    $cassettePlayer->playMusic();
+    $playerAdapter = new \adapter\interfaces\PlayerAdapter();
+    var_dump($playerAdapter);
+    $playerAdapter->playMusic();
 }
