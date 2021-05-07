@@ -83,3 +83,13 @@ function singleton()
     $singletone2 = \singleton\Singleton::getInstance();
     var_dump($singletone2->getName());
 }
+
+function strategy()
+{
+    $users = [];
+    $users[] = new \strategy\Developer(123);
+    $users[] = new \strategy\Analyst(41);
+
+    $accountant = new \strategy\Accountant();
+    var_dump($accountant->getSumOfSalaries($users));
+}
