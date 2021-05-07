@@ -108,3 +108,13 @@ function lazyLoad()
     var_dump($lazyLoad->getCar());
     var_dump($lazyLoad);
 }
+
+function prototype()
+{
+    $client = new \prototype\Client();
+    $order = new \prototype\Order($client);
+    $client->addOrder($order);
+    var_dump($client);
+    $orderCpy = clone $order;
+    var_dump($client);
+}
