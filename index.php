@@ -99,5 +99,12 @@ function builder()
     $userBuilder = new \builder\UserBuilder();
     $userManger = new \builder\UserManager($userBuilder);
     var_dump($userManger->getSuperman());
+}
 
+function lazyLoad()
+{
+    $lazyLoad = new \lazyInitialization\LazyLoadUser();
+    var_dump($lazyLoad);
+    var_dump($lazyLoad->getCar());
+    var_dump($lazyLoad);
 }
