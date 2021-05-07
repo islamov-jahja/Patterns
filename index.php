@@ -93,3 +93,11 @@ function strategy()
     $accountant = new \strategy\Accountant();
     var_dump($accountant->getSumOfSalaries($users));
 }
+
+function builder()
+{
+    $userBuilder = new \builder\UserBuilder();
+    $userManger = new \builder\UserManager($userBuilder);
+    var_dump($userManger->getSuperman());
+
+}
