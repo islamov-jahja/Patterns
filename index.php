@@ -1,4 +1,9 @@
 <?php
+
+use command\JournalRepository;
+use command\JournalWriteCommand;
+use command\Worker;
+
 spl_autoload_register(function (string $className) {
     require_once __DIR__ . '/src/' . str_replace('\\', '/', $className) . '.php';
 });
@@ -10,7 +15,10 @@ spl_autoload_register(function (string $className) {
 //factoryMethod();
 //staticFactory();
 //simpleFactory();
-singleton();
+//singleton();
+//facade();
+//adapter();
+//command();
 
 //контейнер свойств
 function propertyContainer()
@@ -134,4 +142,13 @@ function facade()
     $computer = new \facade\Computer();
     $computerManager = new \facade\ComputerFacade($computer);
     $computerManager->on();
+}
+
+function command()
+{
+    $journalRepository = new JournalRepository();
+    $command = new JournalWriteCommand($journalRepository, 1, 'сохранено');
+    $worker = new Worker();
+    $worker->setOnSave($command);
+    $worker->save();
 }
