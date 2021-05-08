@@ -128,3 +128,10 @@ function adapter()
     var_dump($playerAdapter);
     $playerAdapter->playMusic();
 }
+
+function facade()
+{
+    $computer = new \facade\Computer();
+    $computerManager = new \facade\ComputerFacade($computer);
+    $computerManager->on();
+}
